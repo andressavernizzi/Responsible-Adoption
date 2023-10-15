@@ -13,15 +13,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import jakarta.validation.Valid;
@@ -46,6 +45,13 @@ public class CategoryController {
         return "CreateCategory";
     }
 	
+	@GetMapping("/update/{id}")
+	public String getUpdatePage(Model model, @PathVariable Long id) {
+	    Category category = categoryRepository.findById(id).orElse(null);
+	    model.addAttribute("category", category);
+	    return "UpdateCategory";
+	}
+	
 	@GetMapping("/")
 	public ResponseEntity<List<Category>> getAll() {
 		return ResponseEntity.ok(categoryRepository.findAll());
@@ -56,6 +62,24 @@ public class CategoryController {
 	    Category category = new Category();
 	    category.setDescription(description);
 	    categoryRepository.save(category);
+	    return "redirect:/category";
+	}
+	
+	@PostMapping("/update/{id}")
+	public String updateCategory(@PathVariable Long id, @ModelAttribute("category") Category category) {
+	    Category existingCategory = categoryRepository.findById(id).orElse(null);
+	    
+	    if (existingCategory != null) {
+	        existingCategory.setDescription(category.getDescription());
+	        categoryRepository.save(existingCategory);
+	    }
+	    
+	    return "redirect:/category";
+	}
+	
+	@GetMapping("/delete/{id}")
+	public String deleteCategory(@PathVariable Long id) {
+	    categoryRepository.deleteById(id);
 	    return "redirect:/category";
 	}
 

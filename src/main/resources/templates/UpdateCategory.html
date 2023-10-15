@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<title>Category Update</title>
+</head>
+
+<body>
+	<h1 class="text-center">Category Update</h1>
+	<form method="post" th:action="@{'/category/update/' + ${category.id}}" th:object="${category}">
+		<input type="hidden" name="_method" value="put" />
+		<div class="form-group">
+			<label for="description">Description</label>
+			<input type="text" class="form-control" id="description" name="description" th:field="*{description}"
+				placeholder="Enter description">
+		</div>
+		<button type="submit" class="btn btn-primary">Update</button>
+	</form>
+</body>
+
+</html>
