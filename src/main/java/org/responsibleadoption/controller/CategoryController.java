@@ -8,6 +8,7 @@ import org.responsibleadoption.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +30,13 @@ public class CategoryController {
 
 	@Autowired
 	private CategoryRepository categoryRepository;
-
+	
+	@GetMapping("/page")
+    public String renderCategoryPage(Model model) {
+        model.addAttribute("mensagem", "Olá, Thymeleaf!");
+        return "Category"; 
+    }
+	
 	@GetMapping
 	public ResponseEntity<List<Category>> getAll() {
 		return ResponseEntity.ok(categoryRepository.findAll());
