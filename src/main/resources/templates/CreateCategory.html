@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Category Register</title>
+</head>
+<body>
+    <h1 class="text-center">Category Register</h1>
+    <form method="post" action="/category/create">
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" class="form-control" id="description" name="description" placeholder="Enter description">
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</body>
+</html>

@@ -18,7 +18,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import jakarta.validation.Valid;
@@ -31,12 +34,6 @@ public class CategoryController {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
-	@GetMapping("/page")
-    public String renderCategoryPage(Model model) {
-        model.addAttribute("mensagem", "Olá, Thymeleaf!");
-        return "Category"; 
-    }
-	
 	@GetMapping
 	public String renderAllCategories(Model model) {
 	    List<Category> categories = categoryRepository.findAll();
@@ -44,9 +41,22 @@ public class CategoryController {
 	    return "AllCategories";
 	}
 	
+	@GetMapping("/create")
+    public String getCreatePage() {
+        return "CreateCategory";
+    }
+	
 	@GetMapping("/")
 	public ResponseEntity<List<Category>> getAll() {
 		return ResponseEntity.ok(categoryRepository.findAll());
+	}
+	
+	@PostMapping("/create")
+	public String createCategory(@RequestParam("description") String description) {
+	    Category category = new Category();
+	    category.setDescription(description);
+	    categoryRepository.save(category);
+	    return "redirect:/category";
 	}
 
 	@GetMapping("/{id}")

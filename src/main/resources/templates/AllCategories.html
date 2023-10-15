@@ -2,24 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Todas as Categorias</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>All Categories</title>
 </head>
-<body>
-    <h1>Todas as Categorias</h1>
-    
-    <table>
-        <thead>
+    <body>
+        <h1 class="text-center">Todas as Categorias</h1>
+        <button type="button" class="btn btn-success"><a href="category/create">Create Category</a></button>
+        <table class="table">
+          <thead>
             <tr>
-                <th>ID</th>
-                <th>Nome</th>
+              <th scope="col">ID</th>
+              <th scope="col">Descrição</th>
             </tr>
-        </thead>
-        <tbody>
+          </thead>
+          <tbody>
             <tr th:each="category : ${categories}">
                 <td th:text="${category.id}"></td>
-                <td th:text="${category.description}"></td>
+                <td th:text="${category.description}"></a></td>
             </tr>
-        </tbody>
-    </table>
-</body>
+          </tbody>
+        </table>
+    </body>
 </html>
