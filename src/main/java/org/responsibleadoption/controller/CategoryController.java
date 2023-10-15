@@ -8,6 +8,7 @@ import org.responsibleadoption.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,12 +19,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import jakarta.validation.Valid;
 
-@RestController
+@Controller
 @RequestMapping("/category")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CategoryController {
@@ -38,6 +38,13 @@ public class CategoryController {
     }
 	
 	@GetMapping
+	public String renderAllCategories(Model model) {
+	    List<Category> categories = categoryRepository.findAll();
+	    model.addAttribute("categories", categories);
+	    return "AllCategories";
+	}
+	
+	@GetMapping("/")
 	public ResponseEntity<List<Category>> getAll() {
 		return ResponseEntity.ok(categoryRepository.findAll());
 	}
