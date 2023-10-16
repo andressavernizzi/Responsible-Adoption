@@ -1,23 +1,34 @@
-<div class="container">
-    <h1 class="text-center">Animals for Adoption</h1>
-    <div>
-        <h2>Category: <span th:text="${category.description}"></span></h2>
-    </div>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <title>Animals for Adoption</title>
+</head>
+<body style="background-color: #ADD8E6;"> <!-- Defina o fundo azul claro pastel aqui -->
+    <div class="container">
+        <h1 class="text-center">Animals for Adoption</h1>
+        <div>
+            <h2>Category: <span th:text="${category.description}"></span></h2>
+        </div>
 
-    <h2>Animals in this Category:</h2>
+        <h2>Pets for adoption:</h2>
 
-    <div class="row">
-        <div th:each="animal : ${category.animal}" class="col-lg-4 col-md-4 col-sm-6">
-            <div class="card mb-4" style="width: 100%;">
-                <img th:src="${animal.picture}" class="card-img-top" alt="Animal Photo" style="height: 200px;">
-                <div class="card-body">
-                    <h3 class="card-title" th:text="${animal.name}"></h3>
-                    <p class="card-text" th:text="${animal.age}"></p>
-                    <p class="card-text" th:text="${animal.presentation}"></p>
+        <div class="row">
+            <div th:each="animal : ${category.animal}" class="col-lg-4 col-md-4 col-sm-6">
+                <div class="card mb-4" style="width: 100%;">
+                    <img th:src="${animal.picture}" class="card-img-top" alt="Animal Photo" style="height: 200px;">
+                    <div class="card-body">
+                        <h3 class="card-title" th:text="${animal.name}"></h3>
+                        <p class="card-text" th:text="${animal.age}"></p>
+                        <p class="card-text" th:text="${animal.presentation}"></p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <button type="button" class="btn btn-success"><a href="/category">Return</a></button>
-</div>
+        <button type="button" class="btn btn-success"><a href="/category">Return</a></button>
+    </div>
+</body>
+</html>
