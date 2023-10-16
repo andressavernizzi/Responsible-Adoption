@@ -64,8 +64,8 @@ public class BasicSecurityConfig {
                         .requestMatchers("/users/register").permitAll()
                         .requestMatchers("/error/**").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS).permitAll()
-                        .requestMatchers("/admin/**").hasRole("ADMIN")  // Defina as regras de acesso aqui
-                        .requestMatchers("/user/**").hasRole("USER")    // Defina as regras de acesso aqui
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/user/**").hasRole("USER")
                         .anyRequest().authenticated())
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)

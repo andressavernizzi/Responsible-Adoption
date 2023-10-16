@@ -40,6 +40,16 @@ public class CategoryController {
 	    return "AllCategories";
 	}
 	
+	@GetMapping("/category/{categoryId}")
+	public String getAnimalPage(@PathVariable Long categoryId, Model model) {
+	    Category category = categoryRepository.findById(categoryId).orElse(null);
+	    if (category == null) {
+	        return "error";
+	    }
+	    model.addAttribute("category", category);
+	    return "Category_details";
+	}
+	
 	@GetMapping("/create")
     public String getCreatePage() {
         return "CreateCategory";
