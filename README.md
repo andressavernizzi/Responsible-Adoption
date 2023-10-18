@@ -8,10 +8,10 @@ The "Responsible Adoption" application is a Java project built using the Spring 
 
 This application was developed using the following technologies and tools:
 
-- **Java 17**: The programming language that forms the foundation of this project.
-- **Spring Tools**: A development tool that simplifies the creation of Spring projects.
-- **MySQL**: The database management system used for storing application data.
-- **Insomnia**: An HTTP client for testing APIs.
+- **[Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)**: The programming language that forms the foundation of this project.
+- **[Spring Tools](https://spring.io/tools)**: A development tool that simplifies the creation of Spring projects.
+- **[MySQL](https://dev.mysql.com/downloads/workbench/)**: The database management system used for storing application data.
+- **[Insomnia](https://insomnia.rest/download)**: An HTTP client for testing APIs.
 
 ### Features
 
