@@ -13,6 +13,11 @@ This application was developed using the following technologies and tools:
 - **[MySQL](https://dev.mysql.com/downloads/workbench/)**: The database management system used for storing application data.
 - **[Insomnia](https://insomnia.rest/download)**: An HTTP client for testing APIs.
 
+### Content
+- [Backend](https://github.com/andressavernizzi/Responsible-Adoption/tree/main/src/main/java/org/responsibleadoption)
+- [Frontend](https://github.com/andressavernizzi/Responsible-Adoption/tree/main/src/main/resources/templates)
+- [Database](https://github.com/andressavernizzi/Responsible-Adoption/tree/main/database)
+
 ### Features
 
 The "Responsible Adoption" application offers the following features:
